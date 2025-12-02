@@ -13,11 +13,20 @@
       --bg: #ffffff;
       --text: #1a1a1a;
       --muted: #6b7280;
-      --accent: #2563eb;
-      --accent-light: #dbeafe;
+      --accent: #6b9eca;
+      --accent-light: #e8f4fc;
       --border: #e5e7eb;
-      --max-width: 1000px;
+      --max-width: 1050px;
       --nav-height: 64px;
+      
+      /* Pastel palette - in order */
+      --amber: #f4c28c;
+      --blue: #a0c4e8;
+      --purple: #c9b8e0;
+      --gray: #b8bcc8;
+      --yellow: #f5e6a3;
+      --burgundy: #d4a5a5;
+      --green: #a8d5ba;
     }
     
     * {
@@ -52,7 +61,7 @@
     .nav-content {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
       height: 100%;
       display: flex;
       align-items: center;
@@ -78,14 +87,34 @@
     /* Hero Section */
     .hero {
       margin-top: var(--nav-height);
-      padding: 80px 24px 60px;
+      padding: 80px 0 60px;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Decorative pastel circles */
+    .pastel-circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.5;
     }
     
     .hero-content {
       max-width: var(--max-width);
       margin: 0 auto;
+      padding: 0 32px;
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 48px;
@@ -98,6 +127,7 @@
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      border: 3px solid var(--gray);
     }
     
     .hero-text h1 {
@@ -142,16 +172,103 @@
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
     }
     
     section {
       padding: 40px 0;
       border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
     }
     
     section:last-child {
       border-bottom: none;
+    }
+    
+    /* Decorative circles in sections */
+    #bio::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: var(--amber);
+      border-radius: 50%;
+      opacity: 0.25;
+      right: -20px;
+      top: 20px;
+    }
+    
+    #bio::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: var(--green);
+      border-radius: 50%;
+      opacity: 0.3;
+      right: 60px;
+      bottom: 30px;
+    }
+    
+    #publications::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: var(--purple);
+      border-radius: 50%;
+      opacity: 0.25;
+      left: -20px;
+      top: 50%;
+    }
+    
+    #work::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--yellow);
+      border-radius: 50%;
+      opacity: 0.3;
+      right: 5%;
+      top: 30px;
+    }
+    
+    #education::before {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: var(--burgundy);
+      border-radius: 50%;
+      opacity: 0.2;
+      right: 10%;
+      bottom: 20px;
+    }
+    
+    #education::after {
+      content: '';
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      background: var(--green);
+      border-radius: 50%;
+      opacity: 0.3;
+      left: 5%;
+      top: 60px;
+    }
+    
+    #contact::after {
+      content: '';
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      background: var(--amber);
+      border-radius: 50%;
+      opacity: 0.3;
+      right: 15%;
+      top: 20px;
     }
     
     h2 {
@@ -159,7 +276,28 @@
       font-weight: 700;
       margin-bottom: 24px;
       letter-spacing: -0.01em;
+      display: inline-block;
+      position: relative;
     }
+    
+    /* Pastel accent bar next to section titles */
+    h2::before {
+      content: '';
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 60%;
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+    
+    #bio h2::before { background: var(--amber); }
+    #publications h2::before { background: var(--blue); }
+    #work h2::before { background: var(--purple); }
+    #education h2::before { background: var(--green); }
+    #contact h2::before { background: var(--yellow); }
     
     /* Publications */
     .publications-grid {
@@ -169,14 +307,22 @@
     
     .publication {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 196px 1fr;
       gap: 24px;
       padding: 20px;
       background: #f9fafb;
       border-radius: 12px;
       transition: transform 0.2s, box-shadow 0.2s;
       align-items: center;
+      border-left: 4px solid var(--blue);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
     }
+    
+    .publication:nth-child(1) { border-left-color: var(--blue); }
+    .publication:nth-child(2) { border-left-color: var(--green); }
+    .publication:nth-child(3) { border-left-color: var(--burgundy); }
     
     .publication:hover {
       transform: translateY(-2px);
@@ -185,9 +331,16 @@
     
     .pub-thumbnail {
       width: 100%;
-      height: 224px;
+      height: 157px;
       border-radius: 12px;
       object-fit: contain;
+      transform: scale(1.1);
+    }
+    
+    .pub-thumbnail.crop-top {
+      object-fit: cover;
+      object-position: center 80%;
+      opacity: 0.7;
     }
     
     .pub-content h3 {
@@ -214,15 +367,18 @@
       gap: 16px;
     }
     
-    .pub-links a {
+    .pub-links a,
+    .pub-links .pub-link {
       color: var(--accent);
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
     }
     
-    .pub-links a:hover {
+    .pub-links a:hover,
+    .pub-links .pub-link:hover {
       text-decoration: underline;
+      cursor: pointer;
     }
     
     /* Work & Education */
@@ -244,9 +400,14 @@
       top: 6px;
       width: 8px;
       height: 8px;
-      background: var(--accent);
+      background: var(--purple);
       border-radius: 50%;
     }
+    
+    /* Different pastel colors for each timeline item */
+    #work .timeline-item:nth-child(1)::before { background: var(--purple); }
+    #education .timeline-item:nth-child(1)::before { background: var(--gray); }
+    #education .timeline-item:nth-child(2)::before { background: var(--amber); }
     
     .timeline-item h3 {
       font-size: 18px;
@@ -265,6 +426,63 @@
       font-size: 15px;
     }
     
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .modal-content {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .modal-content h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    
+    .modal-authors {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    
+    .modal-abstract {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 28px;
+      color: var(--muted);
+      cursor: pointer;
+      line-height: 1;
+    }
+    
+    .modal-close:hover {
+      color: var(--text);
+    }
+    
     /* Footer */
     footer {
       padding: 40px 24px;
@@ -275,9 +493,27 @@
     
     /* Responsive */
     @media (max-width: 768px) {
+      .nav-content {
+        padding: 0 16px;
+        flex-direction: column;
+        gap: 8px;
+        height: auto;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+      
+      nav {
+        height: auto;
+      }
+      
+      .hero {
+        margin-top: 80px;
+      }
+      
       .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 0 16px;
       }
       
       .headshot {
@@ -301,12 +537,26 @@
         font-size: 14px;
       }
       
+      .container {
+        padding: 0 16px;
+      }
+      
       h2 {
         font-size: 28px;
       }
       
       .hero-text h1 {
         font-size: 36px;
+      }
+      
+      /* Hide decorative circles on mobile */
+      .pastel-circles,
+      #bio::before, #bio::after,
+      #publications::after,
+      #work::after,
+      #education::before, #education::after,
+      #contact::after {
+        display: none;
       }
     }
   </style>
@@ -328,16 +578,24 @@
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="pastel-circles">
+      <div class="circle" style="width: 80px; height: 80px; background: var(--amber); top: 15%; left: 5%;"></div>
+      <div class="circle" style="width: 50px; height: 50px; background: var(--green); top: 60%; left: 8%;"></div>
+      <div class="circle" style="width: 35px; height: 35px; background: var(--purple); top: 25%; left: 2%;"></div>
+      <div class="circle" style="width: 60px; height: 60px; background: var(--yellow); top: 70%; right: 10%;"></div>
+      <div class="circle" style="width: 45px; height: 45px; background: var(--burgundy); top: 20%; right: 5%;"></div>
+      <div class="circle" style="width: 70px; height: 70px; background: var(--blue); top: 50%; right: 3%;"></div>
+      <div class="circle" style="width: 30px; height: 30px; background: var(--green); top: 80%; right: 15%;"></div>
+    </div>
     <div class="hero-content">
       <img class="headshot" src="assets/me.jpeg" alt="Jacob Thompson" />
       <div class="hero-text">
         <h1>Jacob Thompson</h1>
         <div class="affiliation">MSR Student • Carnegie Mellon University • School of Computer Science (RI)</div>
-        <div style="color: var(--muted); margin-top: 4px;">Pursuing General Agentic Intelligence</div>
+        <div style="color: var(--muted); margin-top: 4px;">Grounding Language Models in Cognition</div>
         <div class="contact-links">
-          <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
-          <a href="https://github.com/jacobtho314" target="_blank">Github</a>
-          <a href="https://www.linkedin.com/in/jacob-thompson-557080194" target="_blank">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=m7L1Vh8AAAAJ&hl=en" target="_blank">Google Scholar</a>
+          <a href="https://github.com/JBT-CMU" target="_blank">Github</a>
         </div>
       </div>
     </div>
@@ -348,7 +606,7 @@
     <div class="container">
       <h2>Bio</h2>
       <p style="font-size: 17px; line-height: 1.7; color: #374151;">
-        I am a 2nd year MSR student in the <a href="https://www.ri.cmu.edu/" target="_blank" style="color: var(--accent);">Robotics Institute</a> at Carnegie Mellon University, where I am fortunately advised by <a href="https://talkingtorobots.com/yonatanbisk.html" target="_blank" style="color: var(--accent);">Yonatan Bisk</a>. I'm most excited by <span style="color: var(--muted);">[blank, will enter later]</span>.
+        I am a 2nd year MSR student in the <a href="https://www.ri.cmu.edu/" target="_blank" style="color: var(--accent);">Robotics Institute</a> at Carnegie Mellon University, where I am fortunately advised by <a href="https://talkingtorobots.com/yonatanbisk.html" target="_blank" style="color: var(--accent);">Yonatan Bisk</a>. Given fundamental limitations in LLM compositionality, sample efficiency, and out-of-distribution generalization, I have pivoted to working on bridging pretrained language modeling with structured probabilistic representations for more robust, generalizable world modeling.
       </p>
       <p style="font-size: 17px; line-height: 1.7; color: #374151; margin-top: 16px;">
         I was first introduced to research at MIT's Computational Reactor Physics Group during my freshman year at Harvard, and began working with machine learning at Caltech's Autonomous Robotics and Controls Lab under <a href="https://www.eas.caltech.edu/people/sjchung" target="_blank" style="color: var(--accent);">Soon-Jo Chung</a>.
@@ -364,14 +622,27 @@
     <div class="container">
       <h2>Publications</h2>
       <div class="publications-grid">
-        <div class="publication">
+        <a href="https://arxiv.org/abs/2512.00736" target="_blank" class="publication">
           <img class="pub-thumbnail" src="assets/papers/REM.png" alt="REM Scene Plot">
           <div class="pub-content">
             <h3>REM: Evaluating LLM Embodied Spatial Reasoning through Multi-Frame Trajectories</h3>
             <div class="pub-authors">Jacob Thompson, Emiliano Garcia-Lopez, Yonatan Bisk</div>
             <div class="pub-venue">Conference on Language Modeling (COLM) 2025</div>
             <div class="pub-links">
-              <a href="https://rembench.com" target="_blank">Project Page</a>
+              <span class="pub-link">arXiv</span>
+              <span class="pub-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://github.com/jbt-cmu/REM', '_blank');">GitHub</span>
+            </div>
+          </div>
+        </a>
+        
+        <div class="publication" onclick="openModal('esm-modal')" style="cursor: pointer;">
+          <img class="pub-thumbnail crop-top" src="assets/papers/ESM.png" alt="Embodied Semantic Memory">
+          <div class="pub-content">
+            <h3>Embodied Semantic Memory</h3>
+            <div class="pub-authors">Jacob Thompson, Haochen Zhang, Quanting Xie, Fan Yang, Yonatan Bisk</div>
+            <div class="pub-venue">Preprint (click for abstract)</div>
+            <div class="pub-links">
+              <span style="color: var(--muted); font-size: 14px;">Manuscript coming within the week! Just waiting for Yonatan's feedback!</span>
             </div>
           </div>
         </div>
@@ -382,12 +653,12 @@
   <!-- Work History Section -->
   <section id="work">
     <div class="container">
-      <h2>Work History</h2>
+      <h2>Where I've Worked</h2>
       <div class="timeline">
         <div class="timeline-item">
           <h3>Machine Learning Research Scientist</h3>
           <div class="timeline-meta">Leidos • 2023–2024</div>
-          <div class="timeline-description">Graph-based knowledge representation for Single + Multi Agent Deep Reinforcement Learning.</div>
+          <div class="timeline-description">Graph-based knowledge representations for Deep RL Agents.</div>
         </div>
       </div>
     </div>
@@ -396,7 +667,7 @@
   <!-- Education Section -->
   <section id="education">
     <div class="container">
-      <h2>Education</h2>
+      <h2>Where I've Studied</h2>
       <div class="timeline">
         <div class="timeline-item">
           <h3>Master of Science in Robotics</h3>
@@ -420,13 +691,23 @@
   <!-- Contact Section -->
   <section id="contact">
     <div class="container">
-      <h2>Contact</h2>
+      <h2>Email Contact</h2>
       <p style="font-size: 17px;">
-        <strong>University Email:</strong> first last @ andrew.cmu.edu<br>
-        <strong>Personal Email:</strong> first last + ML @ gmail.com
+        <strong>University:</strong> first last @ andrew.cmu.edu<br>
+        <strong>Personal:</strong> first last + ML @ gmail.com
       </p>
     </div>
   </section>
+
+  <!-- Abstract Modal -->
+  <div id="esm-modal" class="modal" onclick="if(event.target===this)closeModal('esm-modal')">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('esm-modal')">&times;</span>
+      <h3>Embodied Semantic Memory</h3>
+      <p class="modal-authors">Jacob Thompson, Haochen Zhang, Quanting Xie, Fan Yang, Yonatan Bisk</p>
+      <p class="modal-abstract">Neither humans nor Visual Language Models (VLMs) can effectively reason over increasingly vast scene contexts; attempting to process hours of raw video is both computationally prohibitive and prone to attention collapse. To achieve genuine large-scale scene understanding, embodied agents must instead continuously summarize and abstract their experiences into a compact, structured representation. We propose Embodied Semantic Memory (ESM), an agentic framework enabling VLMs to actively decide what spatial, semantic, and temporal information to store in a hierarchical graph. We first validate ESM on the standard Open-EQA benchmark, where it achieves parity with human baselines on episodic queries. To stress-test the paradigm on longer horizons, we introduce Campus-Bench, a continuous 2-hour real-world egocentric walkthrough containing over 3,000 queries that require reasoning across district-scale environments. On this benchmark, ESM demonstrates superior reasoning capabilities compared to naive memory baselines, while matching or exceeding the accuracy of brute-force long-context approaches with drastically reduced computational overhead. By shifting the focus from ever-longer context windows toward agentic, structured memory, we outline a path toward more generally useful embodied agents.</p>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -437,6 +718,14 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
   </script>
 </body>
 </html>
