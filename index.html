@@ -640,9 +640,9 @@
           <div class="pub-content">
             <h3>Embodied Semantic Memory</h3>
             <div class="pub-authors">Jacob Thompson, Haochen Zhang, Quanting Xie, Fan Yang, Yonatan Bisk</div>
-            <div class="pub-venue">Preprint (click for abstract)</div>
+            <div class="pub-venue">Preprint, submitting/submitted to ICML (click for abstract)</div>
             <div class="pub-links">
-              <span style="color: var(--muted); font-size: 14px;">Manuscript coming within the week! Just waiting for Yonatan's feedback!</span>
+              <span style="color: var(--muted); font-size: 14px;">Will happily share manuscript during interview!</span>
             </div>
           </div>
         </div>
@@ -705,7 +705,7 @@
       <span class="modal-close" onclick="closeModal('esm-modal')">&times;</span>
       <h3>Embodied Semantic Memory</h3>
       <p class="modal-authors">Jacob Thompson, Haochen Zhang, Quanting Xie, Fan Yang, Yonatan Bisk</p>
-      <p class="modal-abstract">Neither humans nor Visual Language Models (VLMs) can effectively reason over increasingly vast scene contexts; attempting to process hours of raw video is both computationally prohibitive and prone to attention collapse. To achieve genuine large-scale scene understanding, embodied agents must instead continuously summarize and abstract their experiences into a compact, structured representation. We propose Embodied Semantic Memory (ESM), an agentic framework enabling VLMs to actively decide what spatial, semantic, and temporal information to store in a hierarchical graph. We first validate ESM on the standard Open-EQA benchmark, where it achieves parity with human baselines on episodic queries. To stress-test the paradigm on longer horizons, we introduce Campus-Bench, a continuous 2-hour real-world egocentric walkthrough containing over 3,000 queries that require reasoning across district-scale environments. On this benchmark, ESM demonstrates superior reasoning capabilities compared to naive memory baselines, while matching or exceeding the accuracy of brute-force long-context approaches with drastically reduced computational overhead. By shifting the focus from ever-longer context windows toward agentic, structured memory, we outline a path toward more generally useful embodied agents.</p>
+      <p class="modal-abstract">Humans understand the world by building compact, queryable memory from experience. In contrast, transformer-based VLMs repeatedly build representations from scratch by attending over their entire visual context. These systems excel at needle-in-a-haystack selection, and prominent episodic memory EQA benchmarks have evolved accordingly, featuring small environments, unique semantic zones, and queries answerable from local context without persistent state. Real-world embodied reasoning breaks this paradigm. Knowing a campus printer is on the third floor of a particular building requires propagating a building name from an exterior sign, tracking floor transitions, and binding these to an observation of a printer, none of which were co-visible. This requires long-horizon state maintenance, not selection alone. To rigorously test this, we introduce Campus-Bench: four 2+ hour continuous campus walkthroughs with 8,000+ queries. We also present Embodied Semantic Memory (ESM), one approach to forcing persistent state by incrementally constructing a hierarchical scene graph during experience and traversing it top-down at inference. On Campus-Bench, long-context and retrieval methods collapse on stateful queries. ESM substantially outperforms both while maintaining parity on existing benchmarks. Our results motivate benchmarks, training procedures, and methods that target state maintenance, providing a viable path toward more generally useful embodied agents.</p>
     </div>
   </div>
 
